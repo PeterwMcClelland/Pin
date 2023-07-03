@@ -2,7 +2,7 @@ import { Button, FormLabel, TextField } from "@mui/material";
 import { Box } from "@mui/system";
 import axios from "axios";
 import React, { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 import ScrollTrigger from "react-scroll-trigger";
 
 const AddSpot = () => {
@@ -11,7 +11,7 @@ const AddSpot = () => {
   const onEnterViewport = () => {
     setAnimation(true);
   };
-  
+  const history = useNavigate();
   const [inputs, setInputs] = useState({
     name: "",
     address: "",
@@ -45,7 +45,7 @@ const AddSpot = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(inputs);
-    sendRequest().then(() => ("/spots"));
+    sendRequest().then(() => history("/spots"));
   };
 
   return (

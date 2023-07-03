@@ -49,7 +49,7 @@ const Spots = () => {
             .filter(
               (spot) =>
                 spot.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                spot.brand.toLowerCase().includes(searchTerm.toLowerCase())
+                spot.spot_type.toLowerCase().includes(searchTerm.toLowerCase())
             )
             .sort((a, b) => a.name.localeCompare(b.name))
             .map((spot, i) => (

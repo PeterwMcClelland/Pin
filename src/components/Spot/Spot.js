@@ -35,7 +35,7 @@ const Spot = (props) => {
                     <li>Spot Type: {spot_type}</li>
                     <li>Address: {address}</li>
                     <li>notes: {notes}</li>
-                    <li>TDS: {image}</li>
+                   
                     
                     
                 </ul>
