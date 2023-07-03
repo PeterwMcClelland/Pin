@@ -2,7 +2,7 @@ import { Button, FormLabel, TextField } from "@mui/material";
 import { Box } from "@mui/system";
 import axios from "axios";
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+
 import ScrollTrigger from "react-scroll-trigger";
 
 const AddSpot = () => {
@@ -11,7 +11,7 @@ const AddSpot = () => {
   const onEnterViewport = () => {
     setAnimation(true);
   };
-  const history = useNavigate();
+  
   const [inputs, setInputs] = useState({
     name: "",
     address: "",
@@ -26,17 +26,6 @@ const AddSpot = () => {
       [e.target.name]: e.target.value,
     };
 
-    if (
-      ["output", "tds", "espresso_gs"].includes(e.target.name) &&
-      newInputs.output &&
-      newInputs.tds &&
-      newInputs.espresso_gs
-    ) {
-      newInputs.percent = (
-        (Number(newInputs.output) * Number(newInputs.tds)) /
-        Number(newInputs.espresso_gs)
-      ).toFixed(2);
-    }
 
     setInputs(newInputs);
   };
@@ -56,7 +45,7 @@ const AddSpot = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(inputs);
-    sendRequest().then(() => history("/spots"));
+    sendRequest().then(() => ("/coffees"));
   };
 
   return (
@@ -128,7 +117,7 @@ const AddSpot = () => {
                 margin="normal"
                 fullWidth
                 variant="outlined"
-                name="country"
+                name="notes"
                 multiline="maxRows"
                 placeholder="Tasting Notes"
               />
