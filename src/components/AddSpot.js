@@ -45,7 +45,7 @@ const AddSpot = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(inputs);
-    sendRequest().then(() => ("/coffees"));
+    sendRequest().then(() => ("/spots"));
   };
 
   return (

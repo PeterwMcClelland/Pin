@@ -1,62 +1,38 @@
 const express = require('express');
-const mongoose = require('mongoose');
 const cors = require('cors');
-const app = express();
+const mongoose = require('mongoose');
+const router = require("./src/routes/spots-routes");
 const path = require('path');
-const PORT = process.env.PORT;
-require('dotenv').config();
-const uri = process.env.MONGODB_URI;
 
-const apiRoutes = require('./services/api');
-
-app.use(cors()); 
-app.use('/api', apiRoutes);
+require("dotenv").config({ path: path.resolve(__dirname, './.env') });
 
 
+const app = express();
 
+const PORT = process.env.PORT || 3000;
 
-
-mongoose.connect(process.env.MONGODB_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-})
 
 app.use(express.json());
+app.use(cors());
+app.use("/api/spots", router);
 
-app.get('/api/spots', async (req, res) => {
-  try {
-    const spots = await mongoose.connection.db.collection('Spots').find({}).toArray();
-    res.json(spots);
-  } catch (error) {
-    console.error(error);
-    res.status(500).send('Internal server error');
-  }
-  
+
+app.use(express.static(path.join(__dirname, '/build')));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '/build', 'index.html'));
 });
 
-const signupRouter = require('./src/routes/SignUp/signup');
-app.use('/api/signup', signupRouter);
+mongoose.connect(
+    process.env.MONGODB_URI, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    }
+    ).then(() => console.log("DataBase Connected!"))
+    .then(() => {
+        app.listen(PORT, () => {
+          console.warn(`App listening on port ${PORT}`);
+          });
 
-const loginRouter = require('./src/routes/LoginForm/login');
-
-const logRequestBody = (req, res, next) => {
-  console.log('Request Body:', req.body);
-  next();
-};
-
-app.use('/api/login', logRequestBody, loginRouter);
-
-
-if (process.env.NODE_ENV === "production") {
-  // Serve any static files
-  app.use(express.static(path.join(__dirname, "client/build")));
-  // Handle React routing, return all requests to React app
-  app.get("*", function(req, res) {
-    res.sendFile(path.join(__dirname, "client/build", "index.html"));
-  });
-  
-}
-
-app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`);
-});
+          
+    }).catch((err)=>console.log(err));
