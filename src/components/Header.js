@@ -81,18 +81,6 @@ export const Header = () => {
                 label="Add Spot"
                 value={1}
               />
-              <Tab
-                LinkComponent={NavLink}
-                to="/signup"
-                label="Sign Up"
-                value={2}
-              />
-              <Tab
-                LinkComponent={NavLink}
-                to="/login"
-                label="Login"
-                value={3}
-              />
             </Tabs>
           )}
         </Toolbar>

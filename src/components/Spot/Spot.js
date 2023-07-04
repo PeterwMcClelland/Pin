@@ -30,7 +30,15 @@ const Spot = (props) => {
           <br />
           <li>Spot Type: {spot_type}</li>
           <li id="address">
-            Address: {address}<br /> {copyPin}
+            Address: {address}
+            <br />{" "}
+            <span
+              onClick={() => {
+                navigator.clipboard.writeText(address);
+              }}
+            >
+              {copyPin}
+            </span>
           </li>
           <li id="notes">Notes: {notes}</li>
 
