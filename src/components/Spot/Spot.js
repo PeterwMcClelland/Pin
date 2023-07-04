@@ -20,24 +20,21 @@ const Spot = (props) => {
         <h1 className="name-txt">{name}</h1>
         <img className="img" src={image} alt={name} width={500} />
       </div>
-      
+
       <div className="column">
         <ul className="column-txt">
-        <br /> 
-          {/* <li>Spot: {name}</li> */}
+          <br />
           <li>Spot Type: {spot_type}</li>
           <li id="address">Address: {address}</li>
           <li id="notes">Notes: {notes}</li>
-        
-      
 
-      <Button component={Link} to={`/spots/${_id}`}>
-        Update
-      </Button>
-      <Button className="delete-button" onClick={props.deleteHandler}>
-        Delete
-      </Button>
-      </ul>
+          <Button component={Link} to={`/spots/${_id}`}>
+            Update
+          </Button>
+          <Button className="delete-button" onClick={props.deleteHandler}>
+            Delete
+          </Button>
+        </ul>
       </div>
     </div>
   );
