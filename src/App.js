@@ -4,6 +4,10 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import AddSpot from "./components/AddSpot";
 import Spots from "./components/Spot/Spots";
 import SpotDetail from "./components/Spot/SpotDetail";
+import Modal from 'react-modal';
+
+Modal.setAppElement('#root');
+
 
 function App() {
   return (

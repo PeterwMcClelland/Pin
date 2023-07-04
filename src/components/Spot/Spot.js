@@ -6,11 +6,13 @@ import ScrollTrigger from "react-scroll-trigger";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCopy } from "@fortawesome/free-solid-svg-icons";
 import "../../App";
+import Modal from 'react-modal';
 
 const copyPin = <FontAwesomeIcon className="copyicon" icon={faCopy} />;
 
 const Spot = (props) => {
   const [animation, setAnimation] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
 
   const onEnterViewport = () => {
     setAnimation(true);
@@ -22,7 +24,11 @@ const Spot = (props) => {
       <ScrollTrigger onEnter={onEnterViewport}></ScrollTrigger>
       <div className="column">
         <h1 className="name-txt">{name}</h1>
-        <img className="img" src={image} alt={name} width={500} />
+        <img className="img" src={image} alt={name} width={500} onClick={() => setModalIsOpen(true)} />
+
+        <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)} style={{content: {top: '50%', left: '50%', right: 'auto', bottom: 'auto', marginRight: '-50%', transform: 'translate(-50%, -50%)', width: '80%', height: '80%'}}}>
+          <img src={image} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+        </Modal>
       </div>
 
       <div className="column">
@@ -55,3 +61,4 @@ const Spot = (props) => {
 };
 
 export default Spot;
+
