@@ -100,7 +100,8 @@ header {
 
 #notes {
   font-size: medium;
-  border-top: solid 1px;
+  border-top: solid 2px #7e3e28;
+
 }
 
 .slideFromRight.card {
@@ -133,7 +134,7 @@ li {
 .card {
   border-radius: 5px;
   padding: 1rem;
-  width: 900px;
+  width: 700px;
   margin-top: 35px;
   display: flow-root;
   background-color: hsl(40, 100%, 97%);
