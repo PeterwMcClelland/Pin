@@ -149,9 +149,9 @@ const SpotDetail = () => {
                 margin="normal"
                 fullWidth
                 variant="outlined"
-                name="country"
+                name="notes"
                 multiline="maxRows"
-                placeholder="Tasting Notes"
+                placeholder="Notes"
               />
 
               <Button variant="contained" type="submit">
