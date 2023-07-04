@@ -83,8 +83,8 @@ export const Header = () => {
               />
               <Tab
                 LinkComponent={NavLink}
-                to="/signup"
-                label="Sign Up"
+                to="/registration"
+                label="Regisration"
                 value={2}
               />
               <Tab
