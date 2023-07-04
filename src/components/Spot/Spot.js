@@ -25,12 +25,12 @@ const Spot = (props) => {
             <ScrollTrigger onEnter={onEnterViewport}></ScrollTrigger>
             <div className='column'>
                 <h2 className='name-txt'>{name}</h2>
-                <img src={image} alt={name} width={500} />
+                <img className="img" src={image} alt={name} width={500} />
             </div>
             
             
             <div className='column'>
-                <ul >
+                <ul className="column-txt">
                     <li>Spot: {name}</li>
                     <li>Spot Type: {spot_type}</li>
                     <li>Address: {address}</li>

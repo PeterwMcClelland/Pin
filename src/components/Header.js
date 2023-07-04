@@ -54,6 +54,8 @@ export const Header = () => {
               
               <Tab LinkComponent={NavLink} to="/spots" label="All Spots" />
               <Tab LinkComponent={NavLink} to="/add" label="Add Spot" />
+              <Tab LinkComponent={NavLink} to="/signup" label="Sign Up" />
+              <Tab LinkComponent={NavLink} to="/login" label="Login" />
             </Tabs>
           )}
         </Toolbar>
