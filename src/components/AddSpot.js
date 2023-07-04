@@ -5,6 +5,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ScrollTrigger from "react-scroll-trigger";
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 const AddSpot = () => {
   const [animation, setAnimation] = useState(false);
 
@@ -31,7 +33,7 @@ const AddSpot = () => {
 
   const sendRequest = async () => {
     axios
-      .post("https://pin-index-3d5f57e24919.herokuapp.com/api/spots", {
+      .post(`${API_URL}/api/coffees`, {
         name: String(inputs.name),
         address: String(inputs.address),
         spot_type: String(inputs.spot_type),

@@ -16,12 +16,13 @@ const SpotDetail = () => {
   const [error, setError] = useState(null);
   const id = useParams().id;
   const navigate = useNavigate();
+  const apiUrl = process.env.REACT_APP_API_URL;
 
   useEffect(() => {
     const fetchHandler = async () => {
       try {
         const res = await axios.get(
-          `https://pin-index-3d5f57e24919.herokuapp.com/api/spots/${id}`
+          `${apiUrl}/api/spots/${id}`
         );
         setInputs(res.data.spot);
       } catch (err) {
@@ -31,12 +32,12 @@ const SpotDetail = () => {
       }
     };
     fetchHandler();
-  }, [id]);
+  }, [id, apiUrl]);
 
   const sendRequest = async () => {
     try {
       await axios.put(
-        `https://pin-index-3d5f57e24919.herokuapp.com/api/spots/${id}`,
+        `${apiUrl}/api/spots/${id}`,
         {
           name: String(inputs.name),
           address: String(inputs.address),
@@ -150,7 +151,7 @@ const SpotDetail = () => {
                 fullWidth
                 variant="outlined"
                 name="notes"
-                multiline="maxRows"
+                multiline={6}
                 placeholder="Notes"
               />
 

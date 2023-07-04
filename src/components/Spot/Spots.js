@@ -3,27 +3,24 @@ import axios from "axios";
 import Spot from "./Spot";
 import "./Spot.css";
 
-const URL =
-  process.env.NODE_ENV === "production"
-    ? "https://pin-index-3d5f57e24919.herokuapp.com/api/spots"
-    : "http://localhost:3000/api/spots";
-
-const fetchHandler = async () => {
-  return await axios.get(URL).then((res) => res.data);
-};
-
-const deleteHandler = async (id, setSpots) => {
-  if (window.confirm("Are you sure you want to delete?")) {
-    await axios
-      .delete(`https://pin-index-3d5f57e24919.herokuapp.com/api/spots/${id}`)
-      .then((res) => res.data)
-      .then(() => fetchHandler().then((data) => setSpots(data.spots)));
-  }
-};
+const apiUrl = process.env.REACT_APP_API_URL;
 
 const Spots = () => {
   const [spots, setSpots] = useState();
   const [searchTerm, setSearchTerm] = useState("");
+
+  const fetchHandler = async () => {
+    return await axios.get(`${apiUrl}/api/spots`).then((res) => res.data);
+  };
+
+  const deleteHandler = async (id) => {
+    if (window.confirm("Are you sure you want to delete?")) {
+      await axios
+        .delete(`${apiUrl}/api/spots/${id}`)
+        .then((res) => res.data)
+        .then(() => fetchHandler().then((data) => setSpots(data.spots)));
+    }
+  };
 
   useEffect(() => {
     fetchHandler().then((data) => setSpots(data.spots));

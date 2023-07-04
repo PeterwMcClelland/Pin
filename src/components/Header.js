@@ -12,7 +12,7 @@ import {
 import { NavLink } from "react-router-dom";
 
 export const Header = () => {
-  const [value, setValue] = useState();
+  const [value, setValue] = useState(0);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 450);
 
   useEffect(() => {
@@ -69,10 +69,30 @@ export const Header = () => {
               value={value}
               onChange={(e, val) => setValue(val)}
             >
-              <Tab LinkComponent={NavLink} to="/spots" label="All Spots" />
-              <Tab LinkComponent={NavLink} to="/add" label="Add Spot" />
-              <Tab LinkComponent={NavLink} to="/signup" label="Sign Up" />
-              <Tab LinkComponent={NavLink} to="/login" label="Login" />
+              <Tab
+                LinkComponent={NavLink}
+                to="/spots"
+                label="All Spots"
+                value={0}
+              />
+              <Tab
+                LinkComponent={NavLink}
+                to="/add"
+                label="Add Spot"
+                value={1}
+              />
+              <Tab
+                LinkComponent={NavLink}
+                to="/signup"
+                label="Sign Up"
+                value={2}
+              />
+              <Tab
+                LinkComponent={NavLink}
+                to="/login"
+                label="Login"
+                value={3}
+              />
             </Tabs>
           )}
         </Toolbar>
