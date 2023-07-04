@@ -3,7 +3,11 @@ import React, { useState } from "react";
 import "./Spot.css";
 import { Link } from "react-router-dom";
 import ScrollTrigger from "react-scroll-trigger";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCopy } from "@fortawesome/free-solid-svg-icons";
 import "../../App";
+
+const copyPin = <FontAwesomeIcon className="copyicon" icon={faCopy} />;
 
 const Spot = (props) => {
   const [animation, setAnimation] = useState(false);
@@ -25,7 +29,9 @@ const Spot = (props) => {
         <ul className="column-txt">
           <br />
           <li>Spot Type: {spot_type}</li>
-          <li id="address">Address: {address}</li>
+          <li id="address">
+            Address: {address}<br /> {copyPin}
+          </li>
           <li id="notes">Notes: {notes}</li>
 
           <Button component={Link} to={`/spots/${_id}`}>
