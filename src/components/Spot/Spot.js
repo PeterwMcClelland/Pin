@@ -17,19 +17,17 @@ const Spot = (props) => {
     <div className={`card ${animation ? "slideFromRight" : ""}`}>
       <ScrollTrigger onEnter={onEnterViewport}></ScrollTrigger>
       <div className="column">
-        <h2 className="name-txt">{name}</h2>
+        <h1 className="name-txt">{name}</h1>
         <img className="img" src={image} alt={name} width={500} />
       </div>
       
       <div className="column">
         <ul className="column-txt">
         <br /> 
-        <br /> 
-        <br /> 
           {/* <li>Spot: {name}</li> */}
           <li>Spot Type: {spot_type}</li>
-          <li>Address: {address}</li>
-          <li>notes: {notes}</li>
+          <li id="address">Address: {address}</li>
+          <li id="notes">Notes: {notes}</li>
         
       
 

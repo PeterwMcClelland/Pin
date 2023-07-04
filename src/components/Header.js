@@ -29,10 +29,10 @@ export const Header = () => {
 
   return (
     <div>
-      <AppBar sx={{ backgroundColor: "#232F3D" }} position="sticky">
+      <AppBar sx={{ backgroundColor: "#7e3e28" }} position="sticky">
         <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
           <NavLink to="/" style={{ textDecoration: "none", color: "inherit" }}>
-            <h1 className="home-h1">Spot Rolodex</h1>
+            <h1 className="home-h1">Pin It</h1>
           </NavLink>
 
           {isMobile ? (
