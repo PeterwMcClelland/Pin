@@ -33,7 +33,7 @@ const AddSpot = () => {
 
   const sendRequest = async () => {
     axios
-      .post(`${API_URL}/api/coffees`, {
+      .post(`${API_URL}/api/spots`, {
         name: String(inputs.name),
         address: String(inputs.address),
         spot_type: String(inputs.spot_type),
