@@ -26,7 +26,6 @@ const AddSpot = () => {
       [e.target.name]: e.target.value,
     };
 
-
     setInputs(newInputs);
   };
 
@@ -34,10 +33,10 @@ const AddSpot = () => {
     axios
       .post("https://pin-index-3d5f57e24919.herokuapp.com/api/spots", {
         name: String(inputs.name),
-          address: String(inputs.address),
-          spot_type: String(inputs.spot_type),
-          notes: String(inputs.notes),
-          image: String(inputs.image),
+        address: String(inputs.address),
+        spot_type: String(inputs.spot_type),
+        notes: String(inputs.notes),
+        image: String(inputs.image),
       })
       .then((res) => res.data);
   };
@@ -66,61 +65,61 @@ const AddSpot = () => {
           marginTop={10}
           marginBottom={10}
         >
-            <FormLabel>Spot</FormLabel>
-              <TextField
-                value={inputs.name}
-                onChange={handleChange}
-                margin="normal"
-                fullWidth
-                variant="outlined"
-                name="name"
-                placeholder='Park Blocks 9'
-              />
+          <FormLabel>Spot</FormLabel>
+          <TextField
+            value={inputs.name}
+            onChange={handleChange}
+            margin="normal"
+            fullWidth
+            variant="outlined"
+            name="name"
+            placeholder="Park Blocks 9"
+          />
 
-              <FormLabel>Address</FormLabel>
-              <TextField
-                value={inputs.address}
-                onChange={handleChange}
-                margin="normal"
-                fullWidth
-                variant="outlined"
-                name="address"
-                placeholder='6666 SW 18th Street Portland, OR.'
-              />
+          <FormLabel>Address</FormLabel>
+          <TextField
+            value={inputs.address}
+            onChange={handleChange}
+            margin="normal"
+            fullWidth
+            variant="outlined"
+            name="address"
+            placeholder="6666 SW 18th Street Portland, OR."
+          />
 
-              <FormLabel>Spot Type</FormLabel>
-              <TextField
-                value={inputs.spot_type}
-                onChange={handleChange}
-                margin="normal"
-                fullWidth
-                variant="outlined"
-                name="spot_type"
-                placeholder="Ledge, Rail, Stairs..."
-              />
+          <FormLabel>Spot Type</FormLabel>
+          <TextField
+            value={inputs.spot_type}
+            onChange={handleChange}
+            margin="normal"
+            fullWidth
+            variant="outlined"
+            name="spot_type"
+            placeholder="Ledge, Rail, Stairs..."
+          />
 
-              <FormLabel>Image</FormLabel>
-              <TextField
-                value={inputs.image}
-                onChange={handleChange}
-                margin="normal"
-                fullWidth
-                variant="outlined"
-                name="image"
-                placeholder='Paste "Copy Image Address" Here'
-              />
+          <FormLabel>Image</FormLabel>
+          <TextField
+            value={inputs.image}
+            onChange={handleChange}
+            margin="normal"
+            fullWidth
+            variant="outlined"
+            name="image"
+            placeholder='Paste "Copy Image Address" Here'
+          />
 
-              <FormLabel>Notes</FormLabel>
-              <TextField
-                value={inputs.notes}
-                onChange={handleChange}
-                margin="normal"
-                fullWidth
-                variant="outlined"
-                name="notes"
-                multiline="maxRows"
-                placeholder="Tasting Notes"
-              />
+          <FormLabel>Notes</FormLabel>
+          <TextField
+            value={inputs.notes}
+            onChange={handleChange}
+            margin="normal"
+            fullWidth
+            variant="outlined"
+            name="notes"
+            multiline="maxRows"
+            placeholder="Tasting Notes"
+          />
 
           <Button variant="contained" type="submit">
             Add Spot

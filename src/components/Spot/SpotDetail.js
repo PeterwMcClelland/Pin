@@ -106,7 +106,7 @@ const SpotDetail = () => {
                 fullWidth
                 variant="outlined"
                 name="name"
-                placeholder='Park Blocks 9'
+                placeholder="Park Blocks 9"
               />
 
               <FormLabel>Address</FormLabel>
@@ -117,7 +117,7 @@ const SpotDetail = () => {
                 fullWidth
                 variant="outlined"
                 name="address"
-                placeholder='6666 SW 18th Street Portland, OR.'
+                placeholder="6666 SW 18th Street Portland, OR."
               />
 
               <FormLabel>Spot Type</FormLabel>

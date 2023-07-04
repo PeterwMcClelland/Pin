@@ -1,5 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { AppBar, Tab, Tabs, Toolbar, Accordion, AccordionSummary, AccordionDetails, Typography } from "@mui/material";
+import {
+  AppBar,
+  Tab,
+  Tabs,
+  Toolbar,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
+  Typography,
+} from "@mui/material";
 import { NavLink } from "react-router-dom";
 
 export const Header = () => {
@@ -11,10 +20,10 @@ export const Header = () => {
       setIsMobile(window.innerWidth <= 450);
     };
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
@@ -23,22 +32,31 @@ export const Header = () => {
       <AppBar sx={{ backgroundColor: "#232F3D" }} position="sticky">
         <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
           <NavLink to="/" style={{ textDecoration: "none", color: "inherit" }}>
-            <h1 className="home-h1">
-               Spot Rolodex {/*<span className="fleet"> Fleet Co.</span> */}
-            </h1>
+            <h1 className="home-h1">Spot Rolodex</h1>
           </NavLink>
 
           {isMobile ? (
-            <Accordion sx={{backgroundColor: 'transparent', boxShadow: 'none', color: 'inherit'}}>
+            <Accordion
+              sx={{
+                backgroundColor: "transparent",
+                boxShadow: "none",
+                color: "inherit",
+              }}
+            >
               <AccordionSummary>
                 <Typography>Menu</Typography>
               </AccordionSummary>
               <AccordionDetails>
-               
-                <NavLink to="/spots" style={{ textDecoration: "none", color: "inherit" }}>
+                <NavLink
+                  to="/spots"
+                  style={{ textDecoration: "none", color: "inherit" }}
+                >
                   <Typography>All Spots</Typography>
                 </NavLink>
-                <NavLink to="/add" style={{ textDecoration: "none", color: "inherit" }}>
+                <NavLink
+                  to="/add"
+                  style={{ textDecoration: "none", color: "inherit" }}
+                >
                   <Typography>Add Spot</Typography>
                 </NavLink>
               </AccordionDetails>
@@ -51,7 +69,6 @@ export const Header = () => {
               value={value}
               onChange={(e, val) => setValue(val)}
             >
-              
               <Tab LinkComponent={NavLink} to="/spots" label="All Spots" />
               <Tab LinkComponent={NavLink} to="/add" label="Add Spot" />
               <Tab LinkComponent={NavLink} to="/signup" label="Sign Up" />
@@ -63,6 +80,5 @@ export const Header = () => {
     </div>
   );
 };
-
 
 export default Header;
