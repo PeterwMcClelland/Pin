@@ -58,6 +58,7 @@ const Spots = () => {
               </li>
             ))}
       </ul>
+      
     </div>
   );
 };
