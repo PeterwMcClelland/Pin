@@ -27,8 +27,8 @@ const Spot = (props) => {
         <img className="img" src={image} alt={name} width={500} onClick={() => setModalIsOpen(true)} />
 
         <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)} style={{content: {top: '50%', left: '50%', right: 'auto', bottom: 'auto', marginRight: '-50%', transform: 'translate(-50%, -50%)', width: '80%', height: '80%'}}}>
-          <img src={image} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
-        </Modal>
+   <img src={image} alt={name} className="fullscreen-image" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+</Modal>
       </div>
 
       <div className="column">

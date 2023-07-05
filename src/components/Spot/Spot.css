@@ -153,6 +153,10 @@ li {
   border-radius: 5px;
 }
 
+.img:hover {
+  cursor: zoom-in;
+}
+
 .column {
   display: inline-table;
   width: 50%;
