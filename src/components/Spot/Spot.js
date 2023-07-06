@@ -6,7 +6,7 @@ import ScrollTrigger from "react-scroll-trigger";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCopy } from "@fortawesome/free-solid-svg-icons";
 import "../../App";
-import Modal from 'react-modal';
+import Modal from "react-modal";
 
 const copyPin = <FontAwesomeIcon className="copyicon" icon={faCopy} />;
 
@@ -24,17 +24,43 @@ const Spot = (props) => {
       <ScrollTrigger onEnter={onEnterViewport}></ScrollTrigger>
       <div className="column">
         <h1 className="name-txt">{name}</h1>
-        <img className="img" src={image} alt={name} width={500} onClick={() => setModalIsOpen(true)} />
+        <img
+          className="img"
+          src={image}
+          alt={name}
+          width={500}
+          onClick={() => setModalIsOpen(true)}
+        />
 
-        <Modal isOpen={modalIsOpen} onRequestClose={() => setModalIsOpen(false)} style={{content: {top: '50%', left: '50%', right: 'auto', bottom: 'auto', marginRight: '-50%', transform: 'translate(-50%, -50%)', width: '80%', height: '80%'}}}>
-   <img src={image} alt={name} className="fullscreen-image" style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
-</Modal>
+        <Modal
+          isOpen={modalIsOpen}
+          onRequestClose={() => setModalIsOpen(false)}
+          style={{
+            content: {
+              top: "50%",
+              left: "50%",
+              right: "auto",
+              bottom: "auto",
+              marginRight: "-50%",
+              transform: "translate(-50%, -50%)",
+              width: "80%",
+              height: "80%",
+            },
+          }}
+        >
+          <img
+            src={image}
+            alt={name}
+            className="fullscreen-image"
+            style={{ width: "100%", height: "100%", objectFit: "contain" }}
+          />
+        </Modal>
       </div>
 
       <div className="column">
         <ul className="column-txt">
           <br />
-          <li>Spot Type: {spot_type}</li>
+          <li>{spot_type}</li>
           <li id="address">
             Address: {address}
             <br />{" "}
@@ -61,4 +87,3 @@ const Spot = (props) => {
 };
 
 export default Spot;
-

@@ -157,6 +157,8 @@ li {
   cursor: zoom-in;
 }
 
+
+
 .column {
   display: inline-table;
   width: 50%;
@@ -231,61 +233,6 @@ li {
   }
 }
 
-/* TDS */
-
-.flavorwheel {
-  font-family: "Jost", sans-serif;
-  border-left: solid 2px ivory;
-  text-align: center;
-}
-
-.wheellink {
-  text-decoration: none;
-  color: #232f3d;
-  border-bottom: solid;
-  border-left: solid;
-  padding-left: 3px;
-}
-
-.green-text .MuiInputBase-input {
-  color: green;
-  transition: color 0.5s ease;
-  animation: pulse 2s infinite;
-}
-
-.default-text .MuiInputBase-input {
-  color: inherit;
-  transition: color 0.5s ease;
-}
-
-@keyframes pulse {
-  0% {
-    transform: scale(0.95);
-  }
-
-  70% {
-    transform: scale(1);
-  }
-
-  100% {
-    transform: scale(0.95);
-  }
-}
-
-.slideInFromLeft-tds-main {
-  animation: slideInFromLeft 1.25s forwards;
-}
-
-@keyframes slideInFromLeft {
-  from {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
 
 /* Mobile Friendly */
 
