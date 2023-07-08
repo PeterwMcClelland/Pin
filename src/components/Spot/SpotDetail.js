@@ -21,9 +21,7 @@ const SpotDetail = () => {
   useEffect(() => {
     const fetchHandler = async () => {
       try {
-        const res = await axios.get(
-          `${apiUrl}/api/spots/${id}`
-        );
+        const res = await axios.get(`${apiUrl}/api/spots/${id}`);
         setInputs(res.data.spot);
       } catch (err) {
         setError(err.message);
@@ -36,16 +34,13 @@ const SpotDetail = () => {
 
   const sendRequest = async () => {
     try {
-      await axios.put(
-        `${apiUrl}/api/spots/${id}`,
-        {
-          name: String(inputs.name),
-          address: String(inputs.address),
-          spot_type: String(inputs.spot_type),
-          notes: String(inputs.notes),
-          image: String(inputs.image),
-        }
-      );
+      await axios.put(`${apiUrl}/api/spots/${id}`, {
+        name: String(inputs.name),
+        address: String(inputs.address),
+        spot_type: String(inputs.spot_type),
+        notes: String(inputs.notes),
+        image: String(inputs.image),
+      });
     } catch (err) {
       setError(err.message);
     }
