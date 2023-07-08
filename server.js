@@ -3,6 +3,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const router = require("./src/routes/spots-routes");
 const path = require("path");
+const emailRoutes = require('./src/routes/email-routes')
 
 require("dotenv").config({ path: path.resolve(__dirname, "./.env") });
 
@@ -13,6 +14,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 app.use(cors());
 app.use("/api/spots", router);
+app.use('/api/email', emailRoutes);
 
 app.use(express.static(path.join(__dirname, "/build")));
 

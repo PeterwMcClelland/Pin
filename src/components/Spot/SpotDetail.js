@@ -34,10 +34,10 @@ const SpotDetail = () => {
     fetchHandler();
   }, [id, apiUrl]);
 
-  const sendRequest = async () => {
+  const sendEmailForApproval = async () => {
     try {
-      await axios.put(
-        `${apiUrl}/api/spots/${id}`,
+      await axios.post(
+        `${apiUrl}/api/email/requestUpdate/${id}`,
         {
           name: String(inputs.name),
           address: String(inputs.address),
@@ -53,7 +53,7 @@ const SpotDetail = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    sendRequest().then(() => navigate("/spots"));
+    sendEmailForApproval().then(() => navigate("/spots"));
   };
 
   const handleChange = (e) => {
