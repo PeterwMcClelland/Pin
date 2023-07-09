@@ -10,7 +10,7 @@ import Modal from "react-modal";
 
 const copyPin = <FontAwesomeIcon className="copyicon" icon={faCopy} />;
 
-const handleClick = () => {
+const handleMessage = () => {
   alert("For this demo the Delete feature has been deactivated.");
 };
 
@@ -83,8 +83,8 @@ const Spot = (props) => {
           </Button>
           <Button
             className="delete-button"
-            /*onClick={props.deleteHandler}*/ onClick={handleClick}
-            onTouchEnd={handleEvent}
+            /*onClick={props.deleteHandler}*/ onClick={handleMessage}
+            onTouchEnd={handleMessage}
           >
             Delete
           </Button>
