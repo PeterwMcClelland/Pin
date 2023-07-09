@@ -84,6 +84,7 @@ const Spot = (props) => {
           <Button
             className="delete-button"
             /*onClick={props.deleteHandler}*/ onClick={handleClick}
+            onTouchEnd={handleEvent}
           >
             Delete
           </Button>
