@@ -32,7 +32,7 @@ export const Header = () => {
       <AppBar sx={{ backgroundColor: "#3e516a" }} position="sticky">
         <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
           <NavLink to="/" style={{ textDecoration: "none", color: "inherit" }}>
-            <h1 className="home-h1">Pin It</h1>
+            <h1 className="home-h1">This Weekend</h1>
           </NavLink>
 
           {isMobile ? (
