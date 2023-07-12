@@ -61,7 +61,7 @@ const Spot = (props) => {
         </Modal>
       </div>
 
-      <div className="column">
+      <div id="txt-column" className="column">
         <ul className="column-txt">
           <br />
           <li>{spot_type}</li>

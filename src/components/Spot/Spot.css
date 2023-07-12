@@ -137,7 +137,7 @@ li {
   width: 700px;
   margin-top: 35px;
   display: flow-root;
-  background-color: hsl(40, 100%, 97%);
+  background-color: hsl(40, 100%, 97%, .9);
   height: 100;
   box-shadow: 5px 5px 10px rgb(204, 204, 204);
   align-items: center;
