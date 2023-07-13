@@ -263,6 +263,10 @@ li {
 
 /* Mobile Friendly */
 
+.mobile-txt-menu {
+  font-family: "Jost", sans-serif;
+}
+
 @media (max-width: 850px) {
   .home-h1 {
     font-size: revert;

@@ -13,6 +13,10 @@ import {
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { NavLink } from "react-router-dom";
 import UserContext from "../components/UserContext/UserContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRightFromBracket } from "@fortawesome/free-solid-svg-icons";
+
+const logoutIcon = <FontAwesomeIcon icon={faRightFromBracket} />;
 
 const Header = () => {
   const [value, setValue] = useState(0);
@@ -63,8 +67,9 @@ const Header = () => {
           </NavLink>
 
           {isMobile ? (
-            <Accordion expanded={isAccordionOpen}>
+            <Accordion sx={{ background: 'lightgray' }} expanded={isAccordionOpen}>
               <AccordionSummary
+                className="mobile-txt-menu"
                 expandIcon={<ExpandMoreIcon />}
                 onClick={() => setIsAccordionOpen(!isAccordionOpen)}
               >
@@ -99,22 +104,26 @@ const Header = () => {
                           fontSize: "12px",
                           ml: "auto",
                           indicatorColor: "none",
+                          borderTop: 'solid'
                         }}
                       >
                         {user}
                       </Typography>
                       <Button
-                        sx={{ color: "red", fontSize: "10px" }}
+                        sx={{ ml: "auto", color: "red", fontSize: "12px", textAlign: 'end' }}
                         onClick={handleLogout}
+                        orientation="vertical"
+                  variant="scrollable"
+                        
                       >
-                        Logout
+                        {logoutIcon}
                       </Button>
                     </div>
                   ) : (
                     <Tab
                       LinkComponent={NavLink}
                       sx={{
-                        color: "lightgreen",
+                        color: "green",
                       }}
                       to="/login"
                       label="LogIn"
@@ -151,15 +160,16 @@ const Header = () => {
                       fontSize: "12px",
                       ml: "auto",
                       indicatorColor: "none",
+                      
                     }}
                   >
                     {user}
                   </Typography>
                   <Button
-                    sx={{ color: "red", fontSize: "10px" }}
+                    sx={{ color: 'white', fontSize: "15px" }}
                     onClick={handleLogout}
                   >
-                    Logout
+                    {logoutIcon}
                   </Button>
                 </div>
               ) : (
