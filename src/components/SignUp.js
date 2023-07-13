@@ -29,8 +29,8 @@ const SignUp = () => {
 
   return (
     <div className="signup-container">
-      <h2>Sign Up</h2>
-      <form onSubmit={handleSubmit}>
+      <h1 className="login-signup">Sign Up</h1>
+      <form className="login-form" onSubmit={handleSubmit}>
         <TextField
           label="Username"
           value={username}

@@ -1,16 +1,15 @@
-
 import React, { useState, useContext } from "react";
 import { TextField, Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import UserContext from '../components/UserContext/UserContext'; // Import the context
+import UserContext from "../components/UserContext/UserContext"; 
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const { setUser } = useContext(UserContext); // Get the setUser function from context
+  const { setUser } = useContext(UserContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,7 +24,7 @@ const Login = () => {
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        setUser(username); // Set the username in the global state
+        setUser(username);
         navigate("/spots");
       })
       .catch((error) => {
@@ -35,8 +34,8 @@ const Login = () => {
 
   return (
     <div className="login-container">
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
+      <h1 className="login-signup">Login</h1>
+      <form className="login-form" onSubmit={handleSubmit}>
         <TextField
           label="Username"
           value={username}
@@ -56,10 +55,11 @@ const Login = () => {
           Login
         </Button>
       </form>
-      <Link to="/signup">Sign Up</Link>
+      <Link className="signup-button" to="/signup">
+        Sign Up
+      </Link>
     </div>
   );
 };
 
 export default Login;
-

@@ -236,12 +236,30 @@ li {
   text-align: center;
 }
 
+.login-signup {
+  font-family: "Teko", sans-serif;
+}
+
+.login-form {
+  display: grid;
+  place-content: center;
+}
 
 /* SignUp */
 
 .signup-container {
   text-align: center;
+  
 }
+
+.signup-button {
+  font-style: italic;
+  font-size: medium;
+  font-family: "Jost", sans-serif;
+  
+}
+
+
 
 /* Mobile Friendly */
 

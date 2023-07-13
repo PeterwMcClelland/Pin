@@ -5,22 +5,23 @@ import {
   Tab,
   Tabs,
   Toolbar,
-  // Accordion,
-  // AccordionSummary,
-  // AccordionDetails,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
   Typography,
 } from "@mui/material";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { NavLink } from "react-router-dom";
-import UserContext from '../components/UserContext/UserContext';
+import UserContext from "../components/UserContext/UserContext";
 
 const Header = () => {
   const [value, setValue] = useState(0);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 450);
+  const [isAccordionOpen, setIsAccordionOpen] = useState(false);
 
   const { user, setUser } = useContext(UserContext);
 
-  // Get user from localStorage immediately before first render
-  const loggedInUser = localStorage.getItem('user');
+  const loggedInUser = localStorage.getItem("user");
   if (loggedInUser) {
     const foundUser = JSON.parse(loggedInUser);
     setUser(foundUser);
@@ -28,7 +29,7 @@ const Header = () => {
 
   const handleLogout = () => {
     setUser(null);
-    localStorage.removeItem('user');
+    localStorage.removeItem("user");
   };
 
   useEffect(() => {
@@ -36,10 +37,20 @@ const Header = () => {
       setIsMobile(window.innerWidth <= 450);
     };
 
-    window.addEventListener("resize", handleResize);
+    document.addEventListener("resize", handleResize);
+
+    const handleClickOutside = (event) => {
+      if (event.target.closest(".MuiAccordion-root")) {
+        return;
+      }
+      setIsAccordionOpen(false);
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
 
     return () => {
-      window.removeEventListener("resize", handleResize);
+      document.removeEventListener("resize", handleResize);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
 
@@ -52,12 +63,71 @@ const Header = () => {
           </NavLink>
 
           {isMobile ? (
-            <React.Fragment /> // Replace this with your accordion code when it's ready
+            <Accordion expanded={isAccordionOpen}>
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                onClick={() => setIsAccordionOpen(!isAccordionOpen)}
+              >
+                Menu
+              </AccordionSummary>
+              <AccordionDetails>
+                <Tabs
+                  sx={{ ml: "auto" }}
+                  textColor="inherit"
+                  value={value}
+                  onChange={(e, val) => setValue(val)}
+                  orientation="vertical"
+                  variant="scrollable"
+                >
+                  <Tab
+                    LinkComponent={NavLink}
+                    to="/spots"
+                    label="All Spots"
+                    value={0}
+                  />
+                  <Tab
+                    LinkComponent={NavLink}
+                    to="/add"
+                    label="Add Spot"
+                    value={1}
+                  />
+                  {user ? (
+                    <div>
+                      <Typography
+                        sx={{
+                          fontStyle: "italic",
+                          fontSize: "12px",
+                          ml: "auto",
+                          indicatorColor: "none",
+                        }}
+                      >
+                        {user}
+                      </Typography>
+                      <Button
+                        sx={{ color: "red", fontSize: "10px" }}
+                        onClick={handleLogout}
+                      >
+                        Logout
+                      </Button>
+                    </div>
+                  ) : (
+                    <Tab
+                      LinkComponent={NavLink}
+                      sx={{
+                        color: "lightgreen",
+                      }}
+                      to="/login"
+                      label="LogIn"
+                      value={2}
+                    />
+                  )}
+                </Tabs>
+              </AccordionDetails>
+            </Accordion>
           ) : (
             <Tabs
               sx={{ ml: "auto" }}
               textColor="inherit"
-              indicatorColor="secondary"
               value={value}
               onChange={(e, val) => setValue(val)}
             >
@@ -75,12 +145,29 @@ const Header = () => {
               />
               {user ? (
                 <div>
-                  <Typography sx={{ fontStyle: 'italic', fontSize: '12px', ml: 'auto', indicatorColor: 'none' }}>{user}</Typography> 
-                  <Button onClick={handleLogout}>Logout</Button>
+                  <Typography
+                    sx={{
+                      fontStyle: "italic",
+                      fontSize: "12px",
+                      ml: "auto",
+                      indicatorColor: "none",
+                    }}
+                  >
+                    {user}
+                  </Typography>
+                  <Button
+                    sx={{ color: "red", fontSize: "10px" }}
+                    onClick={handleLogout}
+                  >
+                    Logout
+                  </Button>
                 </div>
               ) : (
                 <Tab
                   LinkComponent={NavLink}
+                  sx={{
+                    color: "lightgreen",
+                  }}
                   to="/login"
                   label="LogIn"
                   value={2}
@@ -95,6 +182,3 @@ const Header = () => {
 };
 
 export default Header;
-
-
-
