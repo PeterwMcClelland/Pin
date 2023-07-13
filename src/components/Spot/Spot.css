@@ -230,6 +230,19 @@ li {
   }
 }
 
+/* Login */
+
+.login-container {
+  text-align: center;
+}
+
+
+/* SignUp */
+
+.signup-container {
+  text-align: center;
+}
+
 /* Mobile Friendly */
 
 @media (max-width: 850px) {

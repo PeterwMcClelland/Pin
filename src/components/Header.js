@@ -1,19 +1,35 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import {
   AppBar,
+  Button,
   Tab,
   Tabs,
   Toolbar,
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
+  // Accordion,
+  // AccordionSummary,
+  // AccordionDetails,
   Typography,
 } from "@mui/material";
 import { NavLink } from "react-router-dom";
+import UserContext from '../components/UserContext/UserContext';
 
-export const Header = () => {
+const Header = () => {
   const [value, setValue] = useState(0);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 450);
+
+  const { user, setUser } = useContext(UserContext);
+
+  // Get user from localStorage immediately before first render
+  const loggedInUser = localStorage.getItem('user');
+  if (loggedInUser) {
+    const foundUser = JSON.parse(loggedInUser);
+    setUser(foundUser);
+  }
+
+  const handleLogout = () => {
+    setUser(null);
+    localStorage.removeItem('user');
+  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -36,37 +52,7 @@ export const Header = () => {
           </NavLink>
 
           {isMobile ? (
-            <Accordion
-              sx={{
-                backgroundColor: "transparent",
-                boxShadow: "none",
-                color: "inherit",
-              }}
-            >
-              <AccordionSummary>
-                <Typography>Menu</Typography>
-              </AccordionSummary>
-              <AccordionDetails>
-                <NavLink
-                  to="/spots"
-                  style={{ textDecoration: "none", color: "inherit" }}
-                >
-                  <Typography>All Spots</Typography>
-                </NavLink>
-                <NavLink
-                  to="/add"
-                  style={{ textDecoration: "none", color: "inherit" }}
-                >
-                  <Typography>Add Spot</Typography>
-                </NavLink>
-                <NavLink
-                  to="/login"
-                  style={{ textDecoration: "none", color: "inherit" }}
-                >
-                  Login
-                </NavLink>
-              </AccordionDetails>
-            </Accordion>
+            <React.Fragment /> // Replace this with your accordion code when it's ready
           ) : (
             <Tabs
               sx={{ ml: "auto" }}
@@ -87,12 +73,19 @@ export const Header = () => {
                 label="Add Spot"
                 value={1}
               />
-              <Tab
-                LinkComponent={NavLink}
-                to="/login"
-                label="LogIn"
-                value={2}
-              />
+              {user ? (
+                <div>
+                  <Typography sx={{ fontStyle: 'italic', fontSize: '12px', ml: 'auto', indicatorColor: 'none' }}>{user}</Typography> 
+                  <Button onClick={handleLogout}>Logout</Button>
+                </div>
+              ) : (
+                <Tab
+                  LinkComponent={NavLink}
+                  to="/login"
+                  label="LogIn"
+                  value={2}
+                />
+              )}
             </Tabs>
           )}
         </Toolbar>
@@ -102,3 +95,6 @@ export const Header = () => {
 };
 
 export default Header;
+
+
+
