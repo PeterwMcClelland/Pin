@@ -1,5 +1,6 @@
 // const { request } = require("express");
 const Spot = require("../models/Spots");
+const User = require("../models/User");
 
 const getAllSpots = async (req, res, next) => {
   let spots;
@@ -31,6 +32,18 @@ const getById = async (req, res, next) => {
 
 const addSpot = async (req, res, next) => {
   const { name, address, spot_type, notes, image } = req.body;
+  const userId = req.user.id;
+  let user;
+  try {
+    user = await User.findById(userId);
+  } catch (err) {
+    console.log(err);
+  }
+
+  if (!user) {
+    return res.status(404).json({ message: "User not found" });
+  }
+
   let spot;
   try {
     spot = new Spot({
@@ -39,6 +52,7 @@ const addSpot = async (req, res, next) => {
       spot_type,
       notes,
       image,
+      user: user._id,
     });
     await spot.save();
   } catch (err) {
@@ -46,7 +60,7 @@ const addSpot = async (req, res, next) => {
   }
 
   if (!spot) {
-    return res.status(500).json({ message: "Unable To Add" });
+    return res.status(500).json({ message: "Unable to add" });
   }
   return res.status(201).json({ spot });
 };

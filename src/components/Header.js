@@ -59,6 +59,12 @@ export const Header = () => {
                 >
                   <Typography>Add Spot</Typography>
                 </NavLink>
+                <NavLink
+                  to="/login"
+                  style={{ textDecoration: "none", color: "inherit" }}
+                >
+                  Login
+                </NavLink>
               </AccordionDetails>
             </Accordion>
           ) : (
@@ -80,6 +86,12 @@ export const Header = () => {
                 to="/add"
                 label="Add Spot"
                 value={1}
+              />
+              <Tab
+                LinkComponent={NavLink}
+                to="/login"
+                label="LogIn"
+                value={2}
               />
             </Tabs>
           )}
