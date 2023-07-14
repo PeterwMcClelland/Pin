@@ -1,13 +1,16 @@
-const express = require("express");
-const cors = require("cors");
-const mongoose = require("mongoose");
-const router = require("./src/routes/spots-routes");
-const path = require("path");
-const bcrypt = require("bcrypt");
-const User = require("./src/models/User");
-const jwt = require('jsonwebtoken');
+import express from "express";
+import cors from "cors";
+import mongoose from "mongoose";
+import router from "./src/routes/spots-routes.js";
+import path from "path";
+import bcrypt from "bcrypt";
+import User from "./src/models/User";
+import jwt from 'jsonwebtoken';
+import { upload } from './src/middleware/upload.js';
 
-require("dotenv").config({ path: path.resolve(__dirname, "./.env") });
+import dotenv from "dotenv";
+
+dotenv.config({ path: path.resolve(process.cwd(), "./.env") });
 
 const app = express();
 
@@ -66,6 +69,11 @@ app.post("/api/login", async (req, res) => {
   const token = jwt.sign({ userId: user.id }, "your-secret-key");
 
   res.json({ userId: user.id, token });
+});
+
+app.post("/api/spots", upload.single('image'), async (req, res) => {
+  // Now req.file is the file, and you can access the filename with req.file.filename.
+  // You can then save this filename in the MongoDB document.
 });
 
 mongoose

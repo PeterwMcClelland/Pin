@@ -32,14 +32,14 @@ const AddSpot = () => {
   };
 
   const sendRequest = async () => {
-    axios
-      .post(`${API_URL}/api/spots`, {
-        name: String(inputs.name),
-        address: String(inputs.address),
-        spot_type: String(inputs.spot_type),
-        notes: String(inputs.notes),
-        image: String(inputs.image),
-      })
+    const formData = new FormData();
+    formData.append("name", inputs.name);
+    formData.append("address", inputs.address);
+    formData.append("spot_type", inputs.spot_type);
+    formData.append("notes", inputs.notes);
+    formData.append("image", inputs.image); // the image is a File object now
+  
+    axios.post(`${API_URL}/api/spots`, formData)
       .then((res) => res.data);
   };
 
@@ -101,15 +101,17 @@ const AddSpot = () => {
           />
 
           <FormLabel>Image</FormLabel>
-          <TextField
-            value={inputs.image}
-            onChange={handleChange}
-            margin="normal"
-            fullWidth
-            variant="outlined"
-            name="image"
-            placeholder='Paste "Copy Image Address" Here'
-          />
+          <input
+  accept="image/*"
+  type="file"
+  onChange={(e) => {
+    const file = e.target.files[0];
+    setInputs((prev) => ({
+      ...prev,
+      image: file,
+    }));
+  }}
+/>
 
           <FormLabel>Notes</FormLabel>
           <TextField
