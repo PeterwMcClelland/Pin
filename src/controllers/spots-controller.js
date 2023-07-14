@@ -1,4 +1,3 @@
-// const { request } = require("express");
 const Spot = require("../models/Spots");
 const User = require("../models/User");
 

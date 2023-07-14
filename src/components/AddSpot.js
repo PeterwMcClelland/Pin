@@ -38,9 +38,8 @@ const AddSpot = () => {
     formData.append("spot_type", inputs.spot_type);
     formData.append("notes", inputs.notes);
     formData.append("image", inputs.image); // the image is a File object now
-  
-    axios.post(`${API_URL}/api/spots`, formData)
-      .then((res) => res.data);
+
+    axios.post(`${API_URL}/api/spots`, formData).then((res) => res.data);
   };
 
   const handleSubmit = (e) => {
@@ -102,16 +101,16 @@ const AddSpot = () => {
 
           <FormLabel>Image</FormLabel>
           <input
-  accept="image/*"
-  type="file"
-  onChange={(e) => {
-    const file = e.target.files[0];
-    setInputs((prev) => ({
-      ...prev,
-      image: file,
-    }));
-  }}
-/>
+            accept="image/*"
+            type="file"
+            onChange={(e) => {
+              const file = e.target.files[0];
+              setInputs((prev) => ({
+                ...prev,
+                image: file,
+              }));
+            }}
+          />
 
           <FormLabel>Notes</FormLabel>
           <TextField

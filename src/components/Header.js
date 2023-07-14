@@ -67,7 +67,10 @@ const Header = () => {
           </NavLink>
 
           {isMobile ? (
-            <Accordion sx={{ background: 'lightgray' }} expanded={isAccordionOpen}>
+            <Accordion
+              sx={{ background: "lightgray" }}
+              expanded={isAccordionOpen}
+            >
               <AccordionSummary
                 className="mobile-txt-menu"
                 expandIcon={<ExpandMoreIcon />}
@@ -104,17 +107,21 @@ const Header = () => {
                           fontSize: "12px",
                           ml: "auto",
                           indicatorColor: "none",
-                          borderTop: 'solid'
+                          borderTop: "solid",
                         }}
                       >
                         {user}
                       </Typography>
                       <Button
-                        sx={{ ml: "auto", color: "red", fontSize: "12px", textAlign: 'end' }}
+                        sx={{
+                          ml: "auto",
+                          color: "red",
+                          fontSize: "12px",
+                          textAlign: "end",
+                        }}
                         onClick={handleLogout}
                         orientation="vertical"
-                  variant="scrollable"
-                        
+                        variant="scrollable"
                       >
                         {logoutIcon}
                       </Button>
@@ -160,13 +167,12 @@ const Header = () => {
                       fontSize: "12px",
                       ml: "auto",
                       indicatorColor: "none",
-                      
                     }}
                   >
                     {user}
                   </Typography>
                   <Button
-                    sx={{ color: 'white', fontSize: "15px" }}
+                    sx={{ color: "white", fontSize: "15px" }}
                     onClick={handleLogout}
                   >
                     {logoutIcon}
