@@ -5,7 +5,7 @@ const router = require("./src/routes/spots-routes");
 const path = require("path");
 const bcrypt = require("bcrypt");
 const User = require("./src/models/User");
-const jwt = require('jsonwebtoken');
+const jwt = require("jsonwebtoken");
 
 require("dotenv").config({ path: path.resolve(__dirname, "./.env") });
 
@@ -32,7 +32,6 @@ app.post("/api/signup", async (req, res) => {
   }
 
   try {
-
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
