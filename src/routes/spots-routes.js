@@ -1,15 +1,17 @@
-const express = require("express");
+import express from 'express';
+import { getAllSpots, addSpot, getById, updateSpot, deleteSpot } from "../controllers/spots-controller.js";
+import { register, login } from "../controllers/auth-controller.js";
+
 const router = express.Router();
-const spotsController = require("../controllers/spots-controller");
-const authController = require("../controllers/auth-controller");
 
-router.get("/", spotsController.getAllSpots);
-router.post("/", spotsController.addSpot);
-router.get("/:id", spotsController.getById);
-router.put("/:id", spotsController.updateSpot);
-router.delete("/:id", spotsController.deleteSpot);
+router.get("/", getAllSpots);
+router.post("/", addSpot);
+router.get("/:id", getById);
+router.put("/:id", updateSpot);
+router.delete("/:id", deleteSpot);
 
-router.post("/register", authController.register);
-router.post("/login", authController.login);
+router.post("/register", register);
+router.post("/login", login);
 
-module.exports = router;
+export default router;
+

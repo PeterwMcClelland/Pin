@@ -4,7 +4,8 @@ import mongoose from "mongoose";
 import router from "./src/routes/spots-routes.js";
 import path from "path";
 import bcrypt from "bcrypt";
-import User from "./src/models/User";
+import User from "./src/models/User.js";
+
 import jwt from 'jsonwebtoken';
 import { upload } from './src/middleware/upload.js';
 
