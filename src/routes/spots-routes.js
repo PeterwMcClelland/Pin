@@ -12,4 +12,7 @@ router.delete("/:id", spotsController.deleteSpot);
 router.post("/register", authController.register);
 router.post("/login", authController.login);
 
+router.put('/addFavorite/:id', authController.addFavorite);
+router.put('/removeFavorite/:id', authController.removeFavorite);
+
 module.exports = router;

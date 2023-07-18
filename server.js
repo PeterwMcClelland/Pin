@@ -6,6 +6,7 @@ const path = require("path");
 const bcrypt = require("bcrypt");
 const User = require("./src/models/User");
 const jwt = require("jsonwebtoken");
+const Spot = require("./src/models/Spots");
 
 require("dotenv").config({ path: path.resolve(__dirname, "./.env") });
 
@@ -48,6 +49,30 @@ app.post("/api/signup", async (req, res) => {
     res.status(500).json({ message: "Internal server error" });
   }
 });
+
+app.put('/api/spots/addFavorite/:id', async (req, res) => {
+  const { userId } = req.body;
+
+  try {
+    const spot = await Spot.findById(req.params.id);
+    if (!spot) {
+      return res.status(404).json({ message: 'Spot not found' });
+    }
+
+    if (spot.favorites.includes(userId)) {
+      return res.status(400).json({ message: 'Spot already in favorites' });
+    }
+
+    spot.favorites.push(userId);
+    await spot.save();
+
+    return res.status(200).json({ message: 'Added to favorites' });
+  } catch (error) {
+    console.error('Error:', error);
+    return res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
 
 app.post("/api/login", async (req, res) => {
   const { username, password } = req.body;

@@ -81,5 +81,56 @@ const login = async (req, res, next) => {
   res.json({ userId: existingUser.id, token });
 };
 
+const addFavorite = async (req, res, next) => {
+  const { userId } = req.body;
+  const spotId = req.params.id;
+
+  let user;
+  let spot;
+  try {
+    user = await User.findById(userId);
+    spot = await Spot.findById(spotId);
+  } catch (err) {
+    return res.status(500).json({message: "Could not retrieve user or spot information."});
+  }
+
+  if (!user || !spot) {
+    return res.status(404).json({message: "User or spot not found."});
+  }
+
+  if (!user.favorites.includes(spotId)) {
+    user.favorites.push(spot);
+    await user.save();
+  }
+
+  res.json(user);
+};
+
+const removeFavorite = async (req, res, next) => {
+  const { userId } = req.body;
+  const spotId = req.params.id;
+
+  let user;
+  try {
+    user = await User.findById(userId);
+  } catch (err) {
+    return res.status(500).json({message: "Could not retrieve user information."});
+  }
+
+  if (!user) {
+    return res.status(404).json({message: "User not found."});
+  }
+
+  const index = user.favorites.indexOf(spotId);
+  if (index > -1) {
+    user.favorites.splice(index, 1);
+    await user.save();
+  }
+
+  res.json(user);
+};
+
 exports.register = register;
 exports.login = login;
+exports.addFavorite = addFavorite;
+exports.removeFavorite = removeFavorite;

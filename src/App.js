@@ -8,6 +8,7 @@ import Modal from "react-modal";
 import Login from "../src/components/Login";
 import SignUp from "./components/SignUp";
 import UserContext from "../src/components/UserContext/UserContext";
+import Favorites from "./components/Favorites";
 
 Modal.setAppElement("#root");
 
@@ -31,6 +32,8 @@ function App() {
               <Route path="/spots" element={<Spots />} />
               <Route path="/spots/:id" element={<SpotDetail />} />
               <Route path="/spot-list" element={<Navigate to="/Spot-List" />} />
+              <Route path="/favorites" element={<Favorites />} />
+
             </Routes>
           </main>
         </React.Fragment>
