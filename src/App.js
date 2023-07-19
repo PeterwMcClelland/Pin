@@ -12,7 +12,7 @@ import UserContext from "../src/components/UserContext/UserContext";
 Modal.setAppElement("#root");
 
 function App() {
-  const [user, setUser] = useState(null); // create a state to manage the logged-in user
+  const [user, setUser] = useState(null);
 
   return (
     <UserContext.Provider value={{ user, setUser }}>
