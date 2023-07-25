@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import Spots from './Spot/Spots'; // The component you use to display a spot
+import Spots from './Spot/Spots'; 
 import axios from 'axios';
 import UserContext from './UserContext/UserContext';
 
@@ -19,6 +19,17 @@ const Favorites = () => {
 
     fetchFavorites();
   }, [user]);
+
+  const addToFavorites = async (spotId) => {
+    try {
+      const res = await axios.put(`http://localhost:3001/api/spots/addFavorite/${spotId}`, {
+        userId: user.userId,
+      });
+      console.log(res.data.message); 
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
   return (
     <div>
