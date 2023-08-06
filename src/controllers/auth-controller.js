@@ -92,11 +92,13 @@ const addFavorite = async (req, res, next) => {
     user = await User.findById(userId);
     spot = await Spot.findById(spotId);
   } catch (err) {
-    return res.status(500).json({message: "Could not retrieve user or spot information."});
+    return res
+      .status(500)
+      .json({ message: "Could not retrieve user or spot information." });
   }
 
   if (!user || !spot) {
-    return res.status(404).json({message: "User or spot not found."});
+    return res.status(404).json({ message: "User or spot not found." });
   }
 
   if (!user.favorites.includes(spotId)) {
@@ -115,11 +117,13 @@ const removeFavorite = async (req, res, next) => {
   try {
     user = await User.findById(userId);
   } catch (err) {
-    return res.status(500).json({message: "Could not retrieve user information."});
+    return res
+      .status(500)
+      .json({ message: "Could not retrieve user information." });
   }
 
   if (!user) {
-    return res.status(404).json({message: "User not found."});
+    return res.status(404).json({ message: "User not found." });
   }
 
   const index = user.favorites.indexOf(spotId);

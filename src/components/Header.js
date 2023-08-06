@@ -99,7 +99,7 @@
 //                     label="Add Spot"
 //                     value={1}
 //                   />
-                  
+
 //                   {user ? (
 //                     <div>
 //                       <Typography
@@ -137,8 +137,7 @@
 //                       label="LogIn"
 //                       value={2}
 //                     />
-                  
-                  
+
 //                   )}
 //                 </Tabs>
 //               </AccordionDetails>
@@ -420,4 +419,3 @@ const Header = () => {
 };
 
 export default Header;
-

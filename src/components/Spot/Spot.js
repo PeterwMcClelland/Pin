@@ -7,23 +7,15 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCopy } from "@fortawesome/free-solid-svg-icons";
 import "../../App";
 import Modal from "react-modal";
-import axios from 'axios';
+import axios from "axios";
 
-
-
-
-import UserContext from '../UserContext/UserContext';
-
-
-
+import UserContext from "../UserContext/UserContext";
 
 const copyPin = <FontAwesomeIcon className="copyicon" icon={faCopy} />;
 
 const handleMessage = () => {
   alert("For this demo the Delete feature has been deactivated.");
 };
-
-
 
 const Spot = (props) => {
   const [animation, setAnimation] = useState(false);
@@ -32,11 +24,13 @@ const Spot = (props) => {
 
   const addToFavorites = async (_id, user) => {
     try {
-      if(user) {
-        await axios.put(`http://localhost:3001/api/spots/addFavorite/${_id}`, {userId: user._id})
+      if (user) {
+        await axios.put(`http://localhost:3001/api/spots/addFavorite/${_id}`, {
+          userId: user._id,
+        });
       } else {
         // Handle situation when there's no user (not logged in)
-        alert('Please log in to add spots to your favorites');
+        alert("Please log in to add spots to your favorites");
       }
     } catch (err) {
       console.error(err);
@@ -103,8 +97,9 @@ const Spot = (props) => {
           </li>
           <li id="notes">Notes: {notes}</li>
 
-          <button onClick={() => user && addToFavorites(_id, user)}>Add to Favorites</button>
-
+          <button onClick={() => user && addToFavorites(_id, user)}>
+            Add to Favorites
+          </button>
 
           <Button component={Link} to={`/spots/${_id}`}>
             Update

@@ -13,7 +13,7 @@ import Favorites from "./components/Favorites";
 Modal.setAppElement("#root");
 
 function App() {
-  const [user, setUser] = useState(null); 
+  const [user, setUser] = useState(null);
 
   return (
     <UserContext.Provider value={{ user, setUser }}>
@@ -33,7 +33,6 @@ function App() {
               <Route path="/spots/:id" element={<SpotDetail />} />
               <Route path="/spot-list" element={<Navigate to="/Spot-List" />} />
               <Route path="/favorites" element={<Favorites />} />
-
             </Routes>
           </main>
         </React.Fragment>
