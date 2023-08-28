@@ -23,6 +23,9 @@ const Header = () => {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 450);
   const [isAccordionOpen, setIsAccordionOpen] = useState(false);
 
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [showNav, setShowNav] = useState(true);
+
   const { user, setUser } = useContext(UserContext);
 
   const loggedInUser = localStorage.getItem("user");
@@ -58,8 +61,26 @@ const Header = () => {
     };
   }, []);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY) {
+        setShowNav(false);
+      } else {
+        setShowNav(true);
+      }
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [lastScrollY]);
+
   return (
-    <div>
+    <div className={`nav_bar ${showNav ? "" : "nav-hidden"}`}>
       <AppBar sx={{ backgroundColor: "#3e516a" }} position="sticky">
         <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
           <NavLink to="/" style={{ textDecoration: "none", color: "inherit" }}>
