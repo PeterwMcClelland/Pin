@@ -14,7 +14,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Gasoek+One&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Contrail+One&family=Foldit:wght@500&display=swap"); /* font-family: 'Contrail One', cursive; */
-@import url('https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap'); /* font-family: 'Dela Gothic One', cursive; */
+@import url("https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap"); /* font-family: 'Dela Gothic One', cursive; */
 
 header {
   position: sticky;
@@ -31,7 +31,7 @@ header {
 }
 
 .nav_bar {
-  transition: .5s;
+  transition: 0.5s;
 }
 
 .nav-hidden {
@@ -46,7 +46,7 @@ header {
   width: -moz-fit-content;
   color: floralwhite;
   padding: 10px;
-  font-family: 'Dela Gothic One', cursive;
+  font-family: "Dela Gothic One", cursive;
   font-size: xxx-large;
   padding-left: 30px;
 }
@@ -146,7 +146,7 @@ li {
   width: 700px;
   margin-top: 35px;
   display: flow-root;
-  background-color: hsl(40, 100%, 97%, .9);
+  background-color: hsl(40, 100%, 97%, 0.9);
   height: 100;
   box-shadow: 5px 5px 10px rgb(204, 204, 204);
   align-items: center;
@@ -258,17 +258,13 @@ li {
 
 .signup-container {
   text-align: center;
-  
 }
 
 .signup-button {
   font-style: italic;
   font-size: medium;
   font-family: "Jost", sans-serif;
-  
 }
-
-
 
 /* Mobile Friendly */
 

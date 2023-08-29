@@ -34,7 +34,6 @@ function App() {
             </Routes>
           </main>
         </React.Fragment>
-        
       </BrowserRouter>
     </UserContext.Provider>
   );
